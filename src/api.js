@@ -38,3 +38,6 @@ const newGames = `games?key=d809e5b727cb4fbfa0b05ca62a240cc3&dates=${lastYear},$
 export const popularGamesURL = () => `${base_url}${popular_games}`;
 export const upcomingGamesURL = () => `${base_url}${upcomming_games}`;
 export const newGamesURL = () => `${base_url}${newGames}`;
+//GAME details
+export const gameDetailsURL = (game_id) =>
+  `${base_url}games?key=d809e5b727cb4fbfa0b05ca62a240cc3&${game_id}`;
