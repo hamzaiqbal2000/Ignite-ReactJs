@@ -7,34 +7,38 @@ import { useSelector } from "react-redux";
 
 const GameDetail = () => {
   //data
-  const { screen, game } = useSelector((state) => state.detail);
+  const { screen, game, isLoading } = useSelector((state) => state.detail);
   return (
-    <CardShadow>
-      <Detail>
-        <Stats>
-          <div className="rating">
-            <h3>{game.name}</h3>
-            <p>Rating: {game.rating}</p>
-          </div>
-          <Info>
-            <h3>Platforms</h3>
-            <Platforms>
-              {game.results.map((data) => (
-                <h3 key={data.id}>{data.name}</h3>
+    <>
+      {!isLoading && (
+        <CardShadow>
+          <Detail>
+            <Stats>
+              <div className="rating">
+                <h3>{game.name}</h3>
+                <p>Rating: {game.rating}</p>
+              </div>
+              <Info>
+                <h3>Platforms</h3>
+                <Platforms>
+                  {game.results.map((data) => (
+                    <h3 key={data.id}>{data.name}</h3>
+                  ))}
+                </Platforms>
+              </Info>
+            </Stats>
+            <Media>
+              <img src={game.background_image} alt="image" />
+            </Media>
+            <Gallery>
+              {screen.results.map((screen) => (
+                <img src={screen.background_image} key={screen.id} alt="game" />
               ))}
-            </Platforms>
-          </Info>
-        </Stats>
-        <Media>
-          <img src={game.background_image} alt="image" />
-        </Media>
-        <Gallery>
-          {screen.results.map((screen) => (
-            <img src={screen.background_image} key={screen.id} alt="game" />
-          ))}
-        </Gallery>
-      </Detail>
-    </CardShadow>
+            </Gallery>
+          </Detail>
+        </CardShadow>
+      )}
+    </>
   );
 };
 
